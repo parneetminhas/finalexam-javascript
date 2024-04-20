@@ -1,0 +1,41 @@
+<!-- students.component.html -->
+
+<!-- Table to display all students -->
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editStudent(student)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Button for creating a new student -->
+  <button class="btn btn-success" (click)="createStudent()">Create New Student</button>
+  
+  <!-- Form for creating/updating a student -->
+  <form *ngIf="showForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" [(ngModel)]="student.name">
+    </div>
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" class="form-control" [(ngModel)]="student.age">
+    </div>
+    <button class="btn btn-primary" (click)="saveStudent()">Save</button>
+  </form>
+  
